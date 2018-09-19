@@ -1,0 +1,19 @@
+<div class="container">
+	<br>
+	<form>
+		<div class="form-group">
+			<label>Correo Electronico</label>
+			<!--aqui se llama la directiva ngModel y se llama el objeto invocando la llave email creada en el archivo iniciar-sesion.components.ts-->
+			<input class="form-control" type="email" name="email" [(ngModel)]="formulario.auth.email">	
+		</div>
+		<div>
+			<label>Contraseña</label>
+			<!-- -->
+			<input class="form-control" type="password" name="password" [(ngModel)]="formulario.auth.password">
+		</div>
+		<br>
+		<!-- se define una funcion que se crea en el archivo iniciar-sesion.component.ts-->
+		<button class="btn btn-success" (click)="iniciarSesion()">Iniciar sesiòn</button>
+	</form>
+	<p class="alert alert-danger" *ngIf="errores">Error! Revisa la consola</p>
+</div>

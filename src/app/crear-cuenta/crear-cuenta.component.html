@@ -1,0 +1,29 @@
+<div class="container">
+	<br>
+	<form>
+		<div class="form-group">
+			<label>Nombre</label>
+			<!--aqui se llama la directiva ngModel y se llama el objeto invocando la llave name del objeto formulario creado en el archivo crear-cuenta.components.ts-->
+			<input class="form-control" type="text" name="nombre" [(ngModel)]="formulario.user.name">	
+		</div>
+		<div class="form-group">
+			<label>Correo Electronico</label>
+			<input class="form-control" type="email" name="email" [(ngModel)]="formulario.user.email">	
+		</div>
+		<div>
+			<label>Contraseña</label>
+			<!-- -->
+			<input class="form-control" type="password" name="password" [(ngModel)]="formulario.user.password">
+		</div>
+		<div>
+			<label>Confirmar Contraseña</label>
+			<!-- -->
+			<input class="form-control" type="password" name="password_confirmation" [(ngModel)]="formulario.user.password_confirmation">
+		</div>
+
+		<br>
+		<!-- se define una funcion que se crea en el archivo crear-cuenta.component.ts-->
+		<button class="btn btn-primary" (click)="crearCuenta()">Crear Cuenta</button>
+	</form>
+	<!--<p class="alert alert-danger" *ngIf="errores">Error! Revisa la consola</p>-->
+</div>
