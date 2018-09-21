@@ -1,3 +1,4 @@
+/*COMANDO PARA CREAR ESTOS ARCHIVOS ES ng generate service services/usuarios*/
 import { Injectable } from '@angular/core';
 
 /* este modulo se genero con el comando 

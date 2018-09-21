@@ -10,8 +10,12 @@ import { FormsModule } from '@angular/forms';
 /*Se importa route para el tema de rutas de la pagina o sitios*/
 import { RouterModule, Routes } from '@angular/router';
 
-/*aqui se llama nuestro archivo creado de servicios*/
+/*aqui se llama nuestros archivos creados de servicios*/
 import { UsuariosService } from './services/usuarios.service';
+import { ArticulosService } from './services/articulos.service';
+
+/*se importa wards para validar la sesion*/
+import { SesionGuard } from './guards/sesion.guard';
 
 import { AppComponent } from './app.component';
 import { IniciarSesionComponent } from './iniciar-sesion/iniciar-sesion.component';
@@ -19,12 +23,21 @@ import { InicioComponent } from './inicio/inicio.component';
 import { CabeceraComponent } from './cabecera/cabecera.component';
 import { PiePaginaComponent } from './pie-pagina/pie-pagina.component';
 import { CrearCuentaComponent } from './crear-cuenta/crear-cuenta.component';
+import { TraerArticulosComponent } from './traer-articulos/traer-articulos.component';
+import { MostrarArticuloComponent } from './mostrar-articulo/mostrar-articulo.component';
+import { CrearArticuloComponent } from './crear-articulo/crear-articulo.component';
 
 /*se crea para trabajar con las rutas de la aplicacion*/
 const rutas:Routes=[
 	{path:"", component:InicioComponent},
 	{path:'iniciar_sesion', component:IniciarSesionComponent},
-	{path:"crear_cuenta", component:CrearCuentaComponent},
+  {path:"crear_cuenta", component:CrearCuentaComponent},
+  /*canActivate:[SesionGuard] si esta validacion retorna verdadero ejecuta el 
+  componente si retorna false no lo deja pasar*/
+  {path:"traer_articulos", component:TraerArticulosComponent, canActivate:[SesionGuard]},
+  /*aqui se van a usar rutas dinamicas*/
+  {path:"mostrar_articulo/:id", component:MostrarArticuloComponent, canActivate:[SesionGuard]},
+	{path:"crear_articulo", component:CrearArticuloComponent, canActivate:[SesionGuard]},
 ]
 
 @NgModule({
@@ -35,7 +48,10 @@ const rutas:Routes=[
     InicioComponent,
     CabeceraComponent,
     PiePaginaComponent,
-    CrearCuentaComponent
+    CrearCuentaComponent,
+    TraerArticulosComponent,
+    MostrarArticuloComponent,
+    CrearArticuloComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +63,10 @@ const rutas:Routes=[
     RouterModule.forRoot(rutas)
   ],
   providers: [
-  	UsuariosService
+  /*aqui se agregan todos nuestros archivos creados de servicios 
+  importando en la parte superior del archivo*/
+  	UsuariosService,
+    ArticulosService
   ],
   bootstrap: [AppComponent]
 })
