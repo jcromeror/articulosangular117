@@ -26,6 +26,7 @@ import { CrearCuentaComponent } from './crear-cuenta/crear-cuenta.component';
 import { TraerArticulosComponent } from './traer-articulos/traer-articulos.component';
 import { MostrarArticuloComponent } from './mostrar-articulo/mostrar-articulo.component';
 import { CrearArticuloComponent } from './crear-articulo/crear-articulo.component';
+import { ModificarArticuloComponent } from './modificar-articulo/modificar-articulo.component';
 
 /*se crea para trabajar con las rutas de la aplicacion*/
 const rutas:Routes=[
@@ -37,7 +38,8 @@ const rutas:Routes=[
   {path:"traer_articulos", component:TraerArticulosComponent, canActivate:[SesionGuard]},
   /*aqui se van a usar rutas dinamicas*/
   {path:"mostrar_articulo/:id", component:MostrarArticuloComponent, canActivate:[SesionGuard]},
-	{path:"crear_articulo", component:CrearArticuloComponent, canActivate:[SesionGuard]},
+  {path:"crear_articulo", component:CrearArticuloComponent, canActivate:[SesionGuard]},
+	{path:"modificar_articulo/:id", component:ModificarArticuloComponent, canActivate:[SesionGuard]},
 ]
 
 @NgModule({
@@ -51,7 +53,8 @@ const rutas:Routes=[
     CrearCuentaComponent,
     TraerArticulosComponent,
     MostrarArticuloComponent,
-    CrearArticuloComponent
+    CrearArticuloComponent,
+    ModificarArticuloComponent
   ],
   imports: [
     BrowserModule,
@@ -71,3 +74,24 @@ const rutas:Routes=[
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+/*ng build --prod comando que crea una carpeta dist la cual entrega 
+todo el codigo mimificado y esta carpeta es la que se debe de subir
+la servidor para que el codigo no sea manipulado
+
+
+npm install -g http-server  este comando un servidor de pruebas local 
+
+se ubica en la carpeta del proyecto raiz y si quiere el mimificado 
+se va para la carpeta dist y entra a la carpeta del proyecto y ejecuta
+el comando 
+http-server
+y se visualiza en el localhost:8081
+
+url guia para despliegue https://angular.io/guide/deployment
+
+dependiendo el servidor debe de agregar sierta configuracion la cual se 
+puede observar en el link anterior para cada servidor hay diferentes 
+configuraciones 
+
+*/  

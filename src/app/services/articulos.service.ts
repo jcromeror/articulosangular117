@@ -39,7 +39,10 @@ export class ArticulosService {
     return this.http.post<any>(this.url, params, this.encabezados);
   }
 
-  modificarArticulo(articulo){}
+  modificarArticulo(articulo):Observable<any>{
+    let params = JSON.stringify(articulo);
+    return this.http.put<any>(this.url + '/' +articulo.id, params, this.encabezados);
+  }
 
   eliminarArticulo(id):Observable<any>{
     return this.http.delete<any>(this.url + '/' + id, this.encabezados);

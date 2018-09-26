@@ -7,7 +7,7 @@
 	<tbody>
 		<tr *ngFor="let articulo of articulos">
 			<td><a [routerLink]="['/mostrar_articulo',articulo.id]">{{articulo.titulo}}</a></td>
-			<td><a class="btn btn-warning" routerLink="">Editar</a></td>
+			<td><a class="btn btn-warning" [routerLink]="['/modificar_articulo', articulo.id]">Editar</a></td>
 			<td><a class="btn btn-danger" (click)="eliminarArticulo(articulo.id)">Eliminar</a></td>
 		</tr>
 	</tbody>
